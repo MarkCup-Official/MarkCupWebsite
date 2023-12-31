@@ -1,4 +1,4 @@
-# MarkCupWeb
+# MarkCupWebsite
 
 马克杯个人网站的后端(python/falsk)和前端(html/css/js)的实现
 
