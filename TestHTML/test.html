@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            /*overflow: hidden;*/
+        }
+
+        #background {
+            position: fixed;
+            display: block;
+            z-index: -1;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+        }
+    </style>
+    <title>缩放小球</title>
+</head>
+
+<body>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime quaerat, atque numquam quidem blanditiis</p>
+    <canvas id="background"></canvas>
+    <div style="height: 2000px; "></div>
+
+    <script>
+        function draw_ball(x, y, r, c) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fillStyle = c;
+            ctx.fill();
+        }
+
+        function Start() {
+            for (let x = 0; x < size[0]; x++) {
+                for (let y = 0; y < size[1]; y++) {
+                    draw_ball(ballSize / 2 + x * ballSize, ballSize / 2 + y * ballSize, ballSize / 2 * (y / size[1]), color);
+                }
+            }
+        }
+        function Frame() {
+            let flag = false;
+            while ((loopPos + pos / 10) / size[1] > Math.SQRT2) {
+                flag = true;
+                loopPos --;
+                if (loopPos < 0) {
+                    loopPos = size[1];
+                    isFrame = false;
+                    ctx.fillStyle = color;
+                ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+                    return;
+                }
+            }
+
+            if (flag) {
+                ctx.fillStyle = color;
+                ctx.fillRect(0, (loopPos+1) * ballSize, canvasWidth, canvasHeight);
+
+                loopPos = size[1];
+
+            }
+
+            for (let k = 0; k < 10; k++) {
+                if (loopPos < 0) {
+                    loopPos = size[1];
+                    break;
+                }
+                if((loopPos + pos / 10) / size[1] > Math.SQRT2){
+                    ctx.fillStyle = color;
+                ctx.fillRect(0, (loopPos+1) * ballSize, canvasWidth, canvasHeight);
+                loopPos--;
+                
+                k-=1;
+                    continue;
+                }
+
+                ctx.clearRect(0, (loopPos) * ballSize, canvasWidth, ballSize);
+
+                for (let x = 0; x < size[0]; x++) {
+                    draw_ball(ballSize / 2 + x * ballSize, ballSize / 2 + loopPos * ballSize, ballSize / 2 * ((loopPos + pos / 10) / size[1]), color);
+                }
+
+                loopPos--;
+            }
+            requestAnimationFrame(Frame);
+        }
+
+
+        const canvas = document.getElementById('background');   //canvas引用
+        const ctx = canvas.getContext('2d');
+
+
+        const canvasHeight = 2000, canvasWidth = 2000;  // 长宽像素设置
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+
+        const size = [100, 50];    // 球个数
+        const color = "pink";       // 球颜色
+        const ballSize = canvasWidth / size[0];        // 球大小
+
+        var pos = 0;      //记录页面位置
+        var loopPos = size[1];  //小球刷新位置
+
+        var isFrame = true;
+
+        Start();
+        Frame()
+    </script>
+    <script>
+        // 在页面加载完毕后绑定滚动事件
+        document.addEventListener('DOMContentLoaded', function () {
+            window.addEventListener('scroll', handleScroll);
+        });
+        function handleScroll() {
+            pos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            if (!isFrame) {
+                isFrame = true;
+                Frame();
+            }
+        }
+    </script>
+</body>
+
+</html>

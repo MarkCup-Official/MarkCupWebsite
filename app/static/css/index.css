@@ -1,0 +1,33 @@
+/* FlexBox设置居中 */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 中央logo */
+#markcup {
+    width: 50%;
+    padding: 0px;
+}
+
+/* 扁平化按钮样式-临时 */
+.flat-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #000; /* 黑色边框 */
+    color: #000; /* 黑色文字 */
+    background-color: #fff; /* 白色背景 */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.flat-button:hover {
+    background-color: #000; /* 黑色背景 */
+    color: #fff; /* 白色文字 */
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <title>马克杯-MarkCup</title>
+</head>
+
+<body>
+    <button class="flat-button" target="/articles">教学文章</button>
+    <img src="/static/img/index_MarkCup.png" id="markcup">
+    <button class="flat-button" target="/download">游戏下载</button>
+
+    <!-- temnp -->
+    <script>
+        //为按钮添加按下跳转事件
+        var buttons = document.getElementsByClassName('flat-button');
+        for (var i = 0; i < buttons.length; i++) {
+            (function () {
+                var t = buttons[i].getAttribute("target");
+                buttons[i].addEventListener('click', function () {
+                    window.location.href = t;
+                });
+                console.log(t);
+            })()
+        }
+    </script>
+    <!-- temnp -->
+
+</body>
+
+</html>

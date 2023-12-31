@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        #background {
+            position: fixed;
+            display: block;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+        }
+        #lines {
+            position: fixed;
+            display: block;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            pointer-events: none;
+            
+        }
+
+        p{
+            margin: 10px;
+            position: absolute;
+            width: 95%;
+        }
+        h1{
+            margin: 10px;
+        }
+
+        .draggableBox {
+      
+      position: absolute;
+      cursor: grab;
+      
+
+      z-index: 2;
+      border-radius: 1%; /* 设置圆角半径，可以根据需要调整 */
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3); 
+    }
+#page{
+    width: 100%;
+    padding-bottom:56.25%;
+    position: relative;
+}
+.string {
+    width: 0px;
+    height: 0px;
+  top:3%;
+  left: 50%;
+  position: absolute;
+}
+    /*
+    .circle {
+  width: 0%;
+  padding-bottom: 10%;
+
+  top:-5px;
+  left: 45%;
+  margin: 0%;
+  z-index: 99;
+  background-color: #555555; 
+  border-radius: 50%;
+  
+  box-shadow:2px 2px 0px rgba(0, 0, 0, 0.3); 
+
+  position: absolute;
+}*/
+    </style>
+<script src="test2_canvas.js" defer></script>
+<script src="test2_grab.js" defer></script>
+<script src="test2_line.js" defer></script>
+    <title>挂一些照片吧</title>
+</head>
+
+<body>
+    <canvas id="background" style="
+    z-index: 1;"></canvas>
+    <div id="page">
+        <div class="draggableBox" id="box1" style="
+        top: 20%; left: 10%;
+        width: 16%;padding-bottom: 8%;
+        background-color: #c3e058;"><div class="string" id="s1"></div><h1>Lorem</h1></div>
+        <div class="draggableBox" id="box2" style="
+        top: 50%; left: 40%;
+        width: 20%;padding-bottom: 9%;
+        background-color: #3498db;"><div class="string" id="e1"></div><div class="string" id="s2"></div><h1>Lorem ipsum dolor</h1></div>
+        <div class="draggableBox" id="box3" style="
+        top: 10%; left: 70%;
+        width: 15%;padding-bottom: 11%;
+        background-color: #ff8a8a;"><div class="string" id="e2"></div><h1>Lorem ipsum</h1></div>
+    </div>
+    <canvas id="lines" style="
+    z-index: 3;"></canvas>
+</body>
+
+</html>
