@@ -3,10 +3,13 @@
  * 作者: MarkCup
  * 介绍:
  * html绳子代码
- * 在html中使用<div class="string" data-id="sx" data-len="1.1"></div>创建起点
- * 使用<div class="string" id="ex"></div>创建终点
- * 其中x为一个数字, 起点终点需要一一对应
- * length意味着绳子将比起点到终点的距离长几倍, 如1代表绳子初始时绷紧
+ * 在html中使用<div class="string" data-id="s1" data-len="1.1" data-width="6" data-color="rgba(200, 0, 0, 1)" data-size="20"></div>创建起点
+ * 使用<div class="string" data-id="ex"></div>创建终点
+ * data-id 绳子的唯一编号, 其中x为一个数字, 起点终点需要一一对应
+ * data-len 绳子将比起点到终点的距离长几倍, 如1代表绳子初始时绷紧, 不填则为1.1
+ * data-width 绳子的宽度, 不填则为6
+ * data-color 绳子颜色, 不填则为rgba(200, 0, 0, 1)
+ * data-size 绳子钉子的大小, 不填则为20
  */
 
 const canvas = document.getElementById('lines');   //canvas引用
@@ -70,7 +73,7 @@ function Frame() {
         let n = p.length;
         for (let i = 1; i < n; i++) {
             DrawLine(p[i][0] + shadow * scale, p[i][1] + shadow * scale,
-                 p[i - 1][0] + shadow * scale, p[i - 1][1] + shadow * scale);
+                p[i - 1][0] + shadow * scale, p[i - 1][1] + shadow * scale);
         }
     });
 
@@ -239,11 +242,12 @@ for (let i = 0; i < n; i++) {
             let id2 = stringsele[j].dataset.id;
             let c2 = id2.slice(1, id2.length);
             if (c2 == c && i != j) {
-                strings.push(new String(stringsele[i], stringsele[j], stringCount,
-                    parseFloat(stringsele[i].dataset.len),
-                    parseFloat(stringsele[i].dataset.width),
-                    stringsele[i].dataset.color,
-                    parseFloat(stringsele[i].dataset.size)));
+                var len = 1.1, width = 6, color = "rgba(200, 0, 0, 1)", size = 20;
+                if (stringsele[i].hasAttribute("data-len")) len = parseFloat(stringsele[i].dataset.len);
+                if (stringsele[i].hasAttribute("data-width")) width = parseFloat(stringsele[i].dataset.width);
+                if (stringsele[i].hasAttribute("data-color")) color = stringsele[i].dataset.color;
+                if (stringsele[i].hasAttribute("data-size")) size = parseFloat(stringsele[i].dataset.size);
+                strings.push(new String(stringsele[i], stringsele[j], stringCount, len, width, color, size));
             }
         }
     }
