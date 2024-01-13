@@ -1,0 +1,81 @@
+body {
+    /* 隐藏滑条 */
+    overflow: hidden;
+    margin: 0;
+}
+
+/* 背景canvas */
+.canvas {
+    /* 适应页面 */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+/* 绳子canvas */
+.lines {
+    /* 适应页面 */
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    /* 禁止鼠标点击 */
+    pointer-events: none;
+}
+
+/* 绳子节点 */
+.line_note {
+    width: 0px;
+    height: 0px;
+    top: 3%;
+    left: 50%;
+    position: absolute;
+}
+
+/* 可抓取的地方 */
+.draggableBox {
+    position: absolute;
+    cursor: grab;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* 装订处 */
+#page {
+    min-height: 100%;
+    padding: 20px;
+}
+
+.newspaper {
+    position: absolute;
+    background-color: #F0ECE5;
+    box-shadow: 0.8vh 0.8vh 0px rgba(0, 0, 0, 0.3), 0px 0px 3vh rgba(0, 0, 0, 0.1);
+}
+
+.newspaper_word {
+    position: relative;
+    color: #161A30;
+}
+
+#text0 {
+    margin: 1vh;
+    font-size: 1.5vh;
+    text-align: center;
+}
+
+#text0_a {
+    /* 不显示下划线 */
+    text-decoration: none;
+    /* 设置链接颜色，可以根据需要修改 */
+    color: #161A30;
+}
+#text0_a:hover {
+    text-decoration: underline;
+    color: #393939; /* 当鼠标悬停时的链接颜色 */
+}
+
+
+
+h1 {
+    margin: 10px;
+}

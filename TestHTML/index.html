@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="static/index/js/bg.js" defer></script>
+    <script src="static/index/js/grab.js" defer></script>
+    <script src="static/index/js/line.js" defer></script>
+    <link rel="stylesheet" href="static/index/css/styles.css">
+    <title>挂一些照片吧</title>
+</head>
+
+<body>
+    <canvas class="canvas" id="background" style="z-index: -1;"></canvas>
+    <div id="page">
+        <div class="newspaper" id="box1" style="
+        top: 20%; left: 10%;
+        width: 16%;padding-bottom: 8%;">
+            <div class="line_note" data-id="s1" data-len="1.1" data-width="10" data-color="#8D7B68" data-size="20">
+            </div>
+            <h1>Lorem</h1>
+        </div>
+        <div class="newspaper" id="box2" style="
+        top: 50%; left: 40%;
+        width: 20%;padding-bottom: 9%;">
+            <div class="line_note" data-id="e1"></div>
+            <div class="line_note" data-id="s2" data-width="10" data-color="#8D7B68"></div>
+            <h1>Lorem ipsum dolor</h1>
+        </div>
+        <div class="newspaper" id="box3" style="
+        top: 10%; left: 70%;
+        width: 30%;
+        ">
+        <div></div>
+            <div class="line_note" data-id="e2"></div>
+            <p class="newspaper_word" id="text0">MarkCup &copy;2024 杭州马克杯网络科技有限公司<br><a id="text0_a" target="_blank" href="https://beian.miit.gov.cn">浙ICP备2023053973号-1</a>
+            </p>
+        </div>
+    </div>
+    <canvas class="lines" id="lines_shadow" style="z-index: 1;"></canvas>
+    <canvas class="lines" id="lines" style="z-index: 1;"></canvas>
+
+</body>
+
+</html>
