@@ -3,23 +3,28 @@
  * 作者: MarkCup
  * 介绍:
  * html绳子代码
- * 在html中使用<div class="string" data-id="s1" data-len="1.1" data-width="6" data-color="rgba(200, 0, 0, 1)" data-size="20"></div>创建起点
- * 使用<div class="string" data-id="ex"></div>创建终点
- * data-id 绳子的唯一编号, 其中x为一个数字, 起点终点需要一一对应
- * data-len 绳子将比起点到终点的距离长几倍, 如1代表绳子初始时绷紧, 不填则为1.1
- * data-width 绳子的宽度, 不填则为6
- * data-color 绳子颜色, 不填则为rgba(200, 0, 0, 1)
- * data-size 绳子钉子的大小, 不填则为20
+ * 1.在html中使用<div class="string" data-id="s1" data-len="1.1" data-width="6" data-color="rgba(200, 0, 0, 1)" data-size="20"></div>创建起点
+ *   使用<div class="string" data-id="ex"></div>创建终点
+ *   data-id 绳子的唯一编号, 其中x为一个数字, 起点终点需要一一对应
+ *   data-len 绳子将比起点到终点的距离长几倍, 如1代表绳子初始时绷紧, 不填则为1.1
+ *   data-width 绳子的宽度, 不填则为6
+ *   data-color 绳子颜色, 不填则为rgba(200, 0, 0, 1)
+ *   data-size 绳子钉子的大小, 不填则为20
+ * 2.需要一个id为lines的canvas元素和一个id为lines_shadow的canvas元素
  */
 
 const canvas = document.getElementById('lines');   //canvas引用
+const canvas_shadow = document.getElementById('lines_shadow');   //canvas引用
 const ctx = canvas.getContext('2d');
+const ctx_shadow = canvas_shadow.getContext('2d');
 
 const stringCount = 30; //每一条绳子包含的节点数量
-const shadow = 3;       //绳子的影子距离
+const shadow = 10;       //绳子的影子距离
 
 canvas.width = 1920;
 canvas.height = 1080;
+canvas_shadow.width = 1920;
+canvas_shadow.height = 1080;
 
 var scale;              // 画布缩放因数
 
@@ -37,17 +42,8 @@ window.addEventListener('resize', function () {
     scaleInfo = updateCanvasSize();
 });
 
-// 在画布上画一条线
-function DrawLine(x1, y1, x2, y2) {
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-    ctx.closePath();
-}
-
 // 在画布上画一个圆
-function DrawBall(x, y, r) {
+function DrawBall(ctx,x, y, r) {
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2 * Math.PI);
     ctx.fill();
@@ -58,43 +54,55 @@ function DrawBall(x, y, r) {
 function Frame() {
     // 清除画布
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx_shadow.clearRect(0, 0, canvas.width, canvas.height);
 
     // 运行绳子
     strings.forEach(s => {
-        console.log(s);
         s.frame();
     });
 
     // 画绳子影子
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+    ctx_shadow.globalAlpha=0.2;
+    ctx_shadow.lineJoin="round";
+    ctx_shadow.lineCap="round";
+    ctx_shadow.strokeStyle = 'rgba(0, 0, 0, 1)';
+    ctx_shadow.fillStyle = 'rgba(0, 0, 0, 1)';
     strings.forEach(s => {
-        ctx.lineWidth = s.width;
+        ctx_shadow.lineWidth = s.width;
         let p = s.getString();
         let n = p.length;
+        ctx_shadow.beginPath();
+        ctx_shadow.moveTo(p[0][0] + shadow, p[0][1] + shadow);
         for (let i = 1; i < n; i++) {
-            DrawLine(p[i][0] + shadow * scale, p[i][1] + shadow * scale,
-                p[i - 1][0] + shadow * scale, p[i - 1][1] + shadow * scale);
+            ctx_shadow.lineTo(p[i][0] + shadow, p[i][1] + shadow)
         }
-    });
-
-    // 画绳子
-    strings.forEach(s => {
-        ctx.strokeStyle = s.color;
-        ctx.lineWidth = s.width;
-        let p = s.getString();
-        let n = p.length;
-        for (let i = 1; i < n; i++) {
-            DrawLine(p[i][0], p[i][1], p[i - 1][0], p[i - 1][1]);
-        }
+        ctx_shadow.stroke();
     });
 
     // 画钉子影子
-    ctx.fillStyle = "rgba(0, 0, 0,0.2)";
     strings.forEach(s => {
         let p = s.getString();
         let n = p.length - 1;
-        DrawBall(p[0][0] + shadow * scale, p[0][1] + shadow * scale, s.size);
-        DrawBall(p[n][0] + shadow * scale, p[n][1] + shadow * scale, s.size);
+        DrawBall(ctx_shadow,p[0][0] + shadow , p[0][1] + shadow , s.size);
+        DrawBall(ctx_shadow,p[n][0] + shadow , p[n][1] + shadow , s.size);
+    });
+    ctx_shadow.globalAlpha=1;
+
+    // 画绳子
+    ctx.lineCap = "round";
+    ctx.lineJoin="round";
+    strings.forEach(s => {
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = s.width;
+        ctx.fillStyle = s.color;
+        let p = s.getString();
+        let n = p.length;
+        ctx.beginPath();
+        ctx.moveTo(p[0][0], p[0][1]);
+        for (let i = 1; i < n; i++) {
+            ctx.lineTo(p[i][0], p[i][1])
+        }
+        ctx.stroke();
     });
 
     // 画钉子
@@ -102,8 +110,8 @@ function Frame() {
     strings.forEach(s => {
         let p = s.getString();
         let n = p.length - 1;
-        DrawBall(p[0][0], p[0][1], s.size);
-        DrawBall(p[n][0], p[n][1], s.size);
+        DrawBall(ctx,p[0][0], p[0][1], s.size);
+        DrawBall(ctx,p[n][0], p[n][1], s.size);
     });
 
     // 添加下一帧的调用
