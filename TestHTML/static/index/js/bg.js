@@ -28,7 +28,7 @@ const ctxBG = canvasBG.getContext('2d');
 
 
 var canvasWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-var canvasHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;  // 长宽像素设置
+var canvasHeight = 1.8*canvasWidth//window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;  // 长宽像素设置
 
 canvasBG.width = canvasWidth;
 canvasBG.height = canvasHeight;

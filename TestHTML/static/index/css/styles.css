@@ -2,23 +2,26 @@ body {
     /* 隐藏滑条 */
     overflow-x: hidden;
     margin: 0;
+    background-color: rgb(0, 0, 100);
 }
 
 /* 背景 */
 #bg{
-    background-color:rgb(0, 0, 100);
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 900%;
+    width: 100vw;
+    height: 170vw;
     z-index: -100;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
 }
 #bg-t{
     position: absolute;
-    top: -8vw;
-    left: -50vw;
-    width: 200vw;
+    top: -22vw;
+    left: -5vw;
+    width: 100vw;
     z-index: -99;
     margin: 0;
 
@@ -30,9 +33,48 @@ body {
     text-align: center;
 
     font-weight: 1000;
-    color:#f0f0f0;
+    color:rgb(240, 240, 240);
 
     transform: scaleY(0.8);
+}
+#bg-t-0{
+    letter-spacing: 5vw;
+    color:rgb(240, 240, 240);
+}
+#bg-t-1{
+    letter-spacing: 5vw;
+    color:rgb(200, 200, 220);
+}
+#bg-t-2{
+    letter-spacing: 5vw;
+    color:rgb(160, 160, 200);
+}
+#bg-t-3{
+    letter-spacing: 5vw;
+    color:rgb(120, 120, 180);
+}
+#bg-t-4{
+    letter-spacing: 5vw;
+    color:rgb(80, 80, 160);
+}
+#bg-t-5{
+    letter-spacing: 5vw;
+    color:rgb(40, 40, 140);
+}
+#bg-t-6{
+    letter-spacing: 5vw;
+    color:rgb(0, 0, 120);
+}
+#bg-t-7{
+    letter-spacing: 5vw;
+    color:rgb(0, 0, 110);
+}
+#bg-t-8{
+    letter-spacing: 5vw;
+    color:rgb(0, 0, 105);
+}
+#bg-t-9{
+    letter-spacing: 0.5vw;
 }
 
 /* 绳子canvas */
@@ -66,16 +108,15 @@ body {
 #page {
     display: block;
     margin: 0 auto;
-    margin-top: 7.5%;
+    margin-top: 8vw;
 
-    width: 84.5%;
-    height: 200vh;
+    width: 85vw;
+    height: 150vw;
 
-    padding: 20px;
-    border-radius: 1%;
-    box-shadow: 0px 0px 10% rgba(0, 0, 0, 1);
+    border-radius: 1vw;
+    box-shadow: 0 0 5vw rgba(0, 0, 0, 0.5);
 
-    border: 5px solid #000000;
+    border: 0.3vw solid #000000;
 
     overflow: hidden;
 }
@@ -83,9 +124,9 @@ body {
 #background{
     /* 适应页面 */
     position: relative;
-    top: -20px;
-    left: -20px;
-    width:calc(100% + 40px);
+    top: 0;
+    left: 0;
+    width:calc(100% );
 
     z-index: -1;
 }
@@ -111,15 +152,28 @@ body {
     /* 不显示下划线 */
     text-decoration: none;
     /* 设置链接颜色，可以根据需要修改 */
-    color: #161A30;
+    color: #aaaaaa;
 }
 #text0_a:hover {
     text-decoration: underline;
-    color: #393939; /* 当鼠标悬停时的链接颜色 */
+    color: rgb(120, 120, 180); /* 当鼠标悬停时的链接颜色 */
 }
 
 
 
 h1 {
     margin: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #aaaaaa;
+    padding: 20px;
+    text-align: center;
+    
+    margin-top: 10vw;
+}
+
+footer p {
+    margin: 0;
 }
