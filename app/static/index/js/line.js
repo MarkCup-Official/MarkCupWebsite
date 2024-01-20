@@ -1,1 +1,268 @@
-const canvas=document['getElementById']('lines'),canvas_shadow=document['getElementById']('lines_shadow'),ctx=canvas['getContext']('2d'),ctx_shadow=canvas_shadow['getContext']('2d'),stringCount=0x1e,shadow=0xa;canvas['width']=0x780,canvas['height']=0x438,canvas_shadow['width']=0x780,canvas_shadow['height']=0x438;var scale;const g=0x5b25;function updateCanvasSize(){var z=canvas['getBoundingClientRect']();scale=canvas['width']/z['width'];}updateCanvasSize(),window['addEventListener']('resize',function(){scaleInfo=updateCanvasSize();});function DrawBall(z,R,J,l){z['beginPath'](),z['arc'](R,J,l,0x0,0x2*Math['PI']),z['fill'](),z['closePath']();}function Frame(){ctx['clearRect'](0x0,0x0,canvas['width'],canvas['height']),ctx_shadow['clearRect'](0x0,0x0,canvas['width'],canvas['height']),strings['forEach'](z=>{z['frame']();}),ctx_shadow['globalAlpha']=0.2,ctx_shadow['lineJoin']='round',ctx_shadow['lineCap']='round',ctx_shadow['strokeStyle']='rgba(0,\x200,\x200,\x201)',ctx_shadow['fillStyle']='rgba(0,\x200,\x200,\x201)',strings['forEach'](z=>{ctx_shadow['lineWidth']=z['width'];let R=z['getString'](),J=R['length'];ctx_shadow['beginPath'](),ctx_shadow['moveTo'](R[0x0][0x0]+shadow,R[0x0][0x1]+shadow);for(let l=0x1;l<J;l++){ctx_shadow['lineTo'](R[l][0x0]+shadow,R[l][0x1]+shadow);}ctx_shadow['stroke']();}),strings['forEach'](z=>{let R=z['getString'](),J=R['length']-0x1;DrawBall(ctx_shadow,R[0x0][0x0]+shadow,R[0x0][0x1]+shadow,z['size']),DrawBall(ctx_shadow,R[J][0x0]+shadow,R[J][0x1]+shadow,z['size']);}),ctx_shadow['globalAlpha']=0x1,ctx['lineCap']='round',ctx['lineJoin']='round',strings['forEach'](z=>{ctx['strokeStyle']=z['color'],ctx['lineWidth']=z['width'],ctx['fillStyle']=z['color'];let R=z['getString'](),J=R['length'];ctx['beginPath'](),ctx['moveTo'](R[0x0][0x0],R[0x0][0x1]);for(let l=0x1;l<J;l++){ctx['lineTo'](R[l][0x0],R[l][0x1]);}ctx['stroke']();}),ctx['fillStyle']='rgba(80,\x2080,\x2080,\x201)',strings['forEach'](z=>{let R=z['getString'](),J=R['length']-0x1;DrawBall(ctx,R[0x0][0x0],R[0x0][0x1],z['size']),DrawBall(ctx,R[J][0x0],R[J][0x1],z['size']);}),requestAnimationFrame(Frame);}class String{constructor(z,R,J,l,m,V,r){this['pos']=[],this['v']=[],this['count']=J,this['start']=z,this['end']=R,this['width']=m,this['color']=V,this['size']=r;let b=z['getBoundingClientRect'](),C=R['getBoundingClientRect']();this['lastTime']=performance['now']();let G=C['left']-b['left'],Z=C['top']-b['top'];for(let p=0x0;p<this['count']+0x2;p++){this['pos']['push']([(b['left']+G*p/(this['count']+0x1))*scale,(b['top']+Z*p/(this['count']+0x1))*scale]),this['v']['push']([0x0,0x0]);}this['d']=this['dis']([0x0,0x0],[G*scale,Z*scale])/(J+0x1)*l;for(let v=0x0;v<0xe9;v++){this['frame'](!![]);}}['getString'](){let z=this['pos'],R=this['start']['getBoundingClientRect'](),J=this['end']['getBoundingClientRect']();return z[0x0]=[R['left']*scale,R['top']*scale],z[z['length']-0x1]=[J['left']*scale,J['top']*scale],z;}['frame'](z=![]){let R=0x0;if(z)R=0.01;else{let m=performance['now']();R=(m-this['lastTime'])/0x3e8,this['lastTime']=m;}let J=this['start']['getBoundingClientRect'](),l=this['end']['getBoundingClientRect']();this['pos'][0x0]=[J['left']*scale,J['top']*scale],this['pos'][this['pos']['length']-0x1]=[l['left']*scale,l['top']*scale];for(let V=0x1;V<=this['count'];V++){this['v'][V][0x1]+=g*R;}for(let r=0x1;r<=this['count'];r++){this['pos'][r][0x0]+=this['v'][r][0x0]*R,this['pos'][r][0x1]+=this['v'][r][0x1]*R;}for(let b=0x0;b<0x3;b++){for(let C=0x1;C<=this['count'];C++){if(this['dis'](this['pos'][C-0x1],this['pos'][C])>this['d']){let G=this['shouldMove'](this['pos'][C-0x1],this['pos'][C],this['d']);this['pos'][C]=[this['pos'][C-0x1][0x0]+G[0x0],this['pos'][C-0x1][0x1]+G[0x1]];}}for(let Z=this['count'];Z>=0x1;Z--){if(this['dis'](this['pos'][Z+0x1],this['pos'][Z])>this['d']){let p=this['shouldMove'](this['pos'][Z+0x1],this['pos'][Z],this['d']);this['pos'][Z]=[this['pos'][Z+0x1][0x0]+p[0x0],this['pos'][Z+0x1][0x1]+p[0x1]];}}}for(let v=0x1;v<=this['count'];v++){this['v'][v][0x0]*=0.95,this['v'][v][0x1]*=0.95;}}['dis'](z,R){return Math['sqrt'](Math['pow'](R[0x0]-z[0x0],0x2)+Math['pow'](R[0x1]-z[0x1],0x2));}['shouldMove'](z,R,J){const l=[R[0x0]-z[0x0],R[0x1]-z[0x1]],m=Math['sqrt'](l[0x0]**0x2+l[0x1]**0x2),V=[l[0x0]/m,l[0x1]/m],C=[V[0x0]*J,V[0x1]*J];return[C[0x0],C[0x1]];}}var stringsele=document['querySelectorAll']('.string'),strings=[];let n=stringsele['length'];for(let i=0x0;i<n;i++){let id=stringsele[i]['dataset']['id'],c=id['slice'](0x1,id['length']);if(id[0x0]=='s')for(let j=0x0;j<n;j++){let id2=stringsele[j]['dataset']['id'],c2=id2['slice'](0x1,id2['length']);if(c2==c&&i!=j){var len=1.1,width=0x6,color='rgba(200,\x200,\x200,\x201)',size=0x14;if(stringsele[i]['hasAttribute']('data-len'))len=parseFloat(stringsele[i]['dataset']['len']);if(stringsele[i]['hasAttribute']('data-width'))width=parseFloat(stringsele[i]['dataset']['width']);if(stringsele[i]['hasAttribute']('data-color'))color=stringsele[i]['dataset']['color'];if(stringsele[i]['hasAttribute']('data-size'))size=parseFloat(stringsele[i]['dataset']['size']);strings['push'](new String(stringsele[i],stringsele[j],stringCount,len,width,color,size));}}}Frame();
+/**
+ * 创建日期: 2024/1/12
+ * 作者: MarkCup
+ * 介绍:
+ * html绳子代码
+ * 1.在html中使用<div class="string" data-id="s1" data-len="1.1" data-width="6" data-color="rgba(200, 0, 0, 1)" data-size="20"></div>创建起点
+ *   使用<div class="string" data-id="ex"></div>创建终点
+ *   data-id 绳子的唯一编号, 其中x为一个数字, 起点终点需要一一对应
+ *   data-len 绳子将比起点到终点的距离长几倍, 如1代表绳子初始时绷紧, 不填则为1.1
+ *   data-width 绳子的宽度, 不填则为6
+ *   data-color 绳子颜色, 不填则为rgba(200, 0, 0, 1)
+ *   data-size 绳子钉子的大小, 不填则为20
+ * 2.需要一个id为lines的canvas元素和一个id为lines_shadow的canvas元素
+ */
+
+const canvas = document.getElementById('lines');   //canvas引用
+const canvas_shadow = document.getElementById('lines_shadow');   //canvas引用
+const ctx = canvas.getContext('2d');
+const ctx_shadow = canvas_shadow.getContext('2d');
+
+const stringCount = 30; //每一条绳子包含的节点数量
+const shadow = 6;       //绳子的影子距离
+
+var canvasWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+var canvasHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;  // 长宽像素设置
+canvas.width = canvasWidth;
+canvas.height = canvasHeight;
+canvas_shadow.width = canvasWidth;
+canvas_shadow.height = canvasHeight;
+
+var scale;              // 画布缩放因数
+
+const g = 23333;        // 绳子重力加速度
+
+// 计算画布缩放因数
+function updateCanvasSize() {
+    var canvasRect = canvas.getBoundingClientRect();
+    scale = canvas.width / canvasRect.width;
+}
+
+// 计算画布因数, 并在每次重新缩放后重新计算
+updateCanvasSize();
+window.addEventListener('resize', function () {
+    scaleInfo = updateCanvasSize();
+});
+
+// 在画布上画一个圆
+function DrawBall(ctx,x, y, r) {
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.closePath();
+}
+
+// 每帧更新
+function Frame() {
+    // 清除画布
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx_shadow.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 运行绳子
+    strings.forEach(s => {
+        s.frame();
+    });
+
+    // 画绳子影子
+    ctx_shadow.globalAlpha=0.2;
+    ctx_shadow.lineJoin="round";
+    ctx_shadow.lineCap="round";
+    ctx_shadow.strokeStyle = 'rgba(0, 0, 0, 1)';
+    ctx_shadow.fillStyle = 'rgba(0, 0, 0, 1)';
+    strings.forEach(s => {
+        ctx_shadow.lineWidth = s.width;
+        let p = s.getString();
+        let n = p.length;
+        ctx_shadow.beginPath();
+        ctx_shadow.moveTo(p[0][0] + shadow, p[0][1] + shadow);
+        for (let i = 1; i < n; i++) {
+            ctx_shadow.lineTo(p[i][0] + shadow, p[i][1] + shadow)
+        }
+        ctx_shadow.stroke();
+    });
+
+    // 画钉子影子
+    strings.forEach(s => {
+        let p = s.getString();
+        let n = p.length - 1;
+        DrawBall(ctx_shadow,p[0][0] + shadow , p[0][1] + shadow , s.size);
+        DrawBall(ctx_shadow,p[n][0] + shadow , p[n][1] + shadow , s.size);
+    });
+    ctx_shadow.globalAlpha=1;
+
+    // 画绳子
+    ctx.lineCap = "round";
+    ctx.lineJoin="round";
+    strings.forEach(s => {
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = s.width;
+        ctx.fillStyle = s.color;
+        let p = s.getString();
+        let n = p.length;
+        ctx.beginPath();
+        ctx.moveTo(p[0][0], p[0][1]);
+        for (let i = 1; i < n; i++) {
+            ctx.lineTo(p[i][0], p[i][1])
+        }
+        ctx.stroke();
+    });
+
+    // 画钉子
+    ctx.fillStyle = "rgba(80, 80, 80, 1)";
+    strings.forEach(s => {
+        let p = s.getString();
+        let n = p.length - 1;
+        DrawBall(ctx,p[0][0], p[0][1], s.size);
+        DrawBall(ctx,p[n][0], p[n][1], s.size);
+    });
+
+    // 添加下一帧的调用
+    requestAnimationFrame(Frame);
+}
+
+// 一条绳子
+class String {
+
+    // 初始化
+    constructor(start, end, count, length, width, color, size) {
+        this.pos = []
+        this.v = []
+
+        this.count = count;
+
+        this.start = start;
+        this.end = end;
+
+        this.width = width;
+        this.color = color;
+        this.size = size;
+
+        let s = start.getBoundingClientRect();
+        let e = end.getBoundingClientRect();
+
+        this.lastTime = performance.now();
+
+        // 平均生成绳子节点位置
+        let dx = e.left - s.left, dy = e.top - s.top;
+        for (let i = 0; i < this.count + 2; i++) {
+            this.pos.push([(s.left + dx * i / (this.count + 1)) * scale, (s.top + dy * i / (this.count + 1)) * scale]);
+            this.v.push([0, 0]);
+        }
+        this.d = this.dis([0, 0], [dx * scale, dy * scale]) / (count + 1) * length;
+
+        // 让绳子动一会
+        for (let i = 0; i < 233; i++) {
+            this.frame(0.01);
+        }
+    }
+
+    // 获取绳子当前所有节点
+    getString() {
+        let res = this.pos;
+        let s = this.start.getBoundingClientRect();
+        let e = this.end.getBoundingClientRect();
+        res[0] = [s.left * scale, s.top * scale];
+        res[res.length - 1] = [e.left * scale, e.top * scale];
+
+        return res;
+    }
+
+    // 更新一帧的物理运动
+    frame(force = 0) {
+        let time = 0;
+        if (force!=0) {
+            time =force;
+        } else {
+            // 获取当前时间
+            let now = performance.now();
+            time = (now - this.lastTime) / 1000;
+            this.lastTime = now;
+        }
+
+        // 更新头尾节点位置
+        let s = this.start.getBoundingClientRect();
+        let e = this.end.getBoundingClientRect();
+        this.pos[0] = [s.left * scale, s.top * scale];
+        this.pos[this.pos.length - 1] = [e.left * scale, e.top * scale];
+
+        // 重力, 加速度
+        for (let i = 1; i <= this.count; i++) {
+            this.v[i][1] += g * time;
+        }
+
+        // 应用速度
+        for (let i = 1; i <= this.count; i++) {
+            this.pos[i][0] += this.v[i][0] * time;
+            this.pos[i][1] += this.v[i][1] * time;
+        }
+
+        //拉绳
+        for (let _ = 0; _ < 3; _++) {
+            for (let i = 1; i <= this.count; i++) {
+                if (this.dis(this.pos[i - 1], this.pos[i]) > this.d) {
+                    let d = this.shouldMove(this.pos[i - 1], this.pos[i], this.d);
+                    //this.v[i][0] +=d[0]*time*10000; //惯性, 会有奇怪的bug, 弃用
+                    //this.v[i][1] +=d[1]*time*10000;
+                    //this.v[i][1] =0;
+                    this.pos[i] = [this.pos[i - 1][0] + d[0], this.pos[i - 1][1] + d[1]];
+                }
+            }
+            for (let i = this.count; i >= 1; i--) {
+                if (this.dis(this.pos[i + 1], this.pos[i]) > this.d) {
+                    let d = this.shouldMove(this.pos[i + 1], this.pos[i], this.d);
+                    //this.v[i][0] +=d[0]*time*10000;
+                    //this.v[i][1] +=d[1]*time*10000;
+                    //this.v[i][1] =0;
+                    this.pos[i] = [this.pos[i + 1][0] + d[0], this.pos[i + 1][1] + d[1]];
+                }
+            }
+        }
+
+        // 速度阻力
+        for (let i = 1; i <= this.count; i++) {
+            this.v[i][0] *= 0.95;
+            this.v[i][1] *= 0.95;
+        }
+    }
+
+    // 计算两点距离([x,y],[x,y])->[x,y]
+    dis(a, b) {
+        return Math.sqrt(Math.pow((b[0] - a[0]), 2) + Math.pow((b[1] - a[1]), 2));
+    }
+
+    // 计算每一个绳子节点需要被拉扯的距离([x,y],[x,y],distance)->[x,y]
+    shouldMove(a, b, r) {
+        const vectorAB = [b[0] - a[0], b[1] - a[1]];
+        const lengthAB = Math.sqrt(vectorAB[0] ** 2 + vectorAB[1] ** 2);
+        const unitVectorAB = [vectorAB[0] / lengthAB, vectorAB[1] / lengthAB];
+        const resultVector = [unitVectorAB[0] * r, unitVectorAB[1] * r];
+        return [resultVector[0], resultVector[1]];
+    }
+}
+
+// 获取所有绳子节点, 并实例化绳子
+var stringsele = document.querySelectorAll('.line_note');
+var strings = [];
+let n = stringsele.length;
+for (let i = 0; i < n; i++) {
+    let id = stringsele[i].dataset.id;
+    let c = id.slice(1, id.length);
+    if (id[0] == "s") {
+        for (let j = 0; j < n; j++) {
+            let id2 = stringsele[j].dataset.id;
+            let c2 = id2.slice(1, id2.length);
+            if (c2 == c && i != j) {
+                var len = 1.1, width = 6, color = "rgba(200, 0, 0, 1)", size = 20;
+                if (stringsele[i].hasAttribute("data-len")) len = parseFloat(stringsele[i].dataset.len);
+                if (stringsele[i].hasAttribute("data-width")) width = parseFloat(stringsele[i].dataset.width);
+                if (stringsele[i].hasAttribute("data-color")) color = stringsele[i].dataset.color;
+                if (stringsele[i].hasAttribute("data-size")) size = parseFloat(stringsele[i].dataset.size);
+                strings.push(new String(stringsele[i], stringsele[j], stringCount, len, width, color, size));
+            }
+        }
+    }
+
+}
+
+// 开始动画
+Frame();

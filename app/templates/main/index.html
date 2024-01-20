@@ -4,104 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body{
-            background-color: #ffffff;
-            overflow: hidden;
-        }
-
-        #background {
-            position: fixed;
-            display: block;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-        }
-        .lines {
-            position: fixed;
-            display: block;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            pointer-events: none;
-            
-        }
-
-        p{
-            margin: 10px;
-            position: absolute;
-            width: 95%;
-        }
-        h1{
-            margin: 10px;
-        }
-
-        .draggableBox {
-      
-      position: absolute;
-      cursor: grab;
-      
-
-      z-index: 2;
-      border-radius: 1%; /* 设置圆角半径，可以根据需要调整 */
-  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3); 
-    }
-#page{
-    width: 100%;
-    padding-bottom:56.25%;
-    position: relative;
-}
-.string {
-    width: 0px;
-    height: 0px;
-  top:3%;
-  left: 50%;
-  position: absolute;
-}
-    /*
-    .circle {
-  width: 0%;
-  padding-bottom: 10%;
-
-  top:-5px;
-  left: 45%;
-  margin: 0%;
-  z-index: 99;
-  background-color: #555555; 
-  border-radius: 50%;
-  
-  box-shadow:2px 2px 0px rgba(0, 0, 0, 0.3); 
-
-  position: absolute;
-}*/
-    </style>
-<script src="static/index/js/bg.js" defer></script>
-<script src="static/index/js/grab.js" defer></script>
-<script src="static/index/js/line.js" defer></script>
-    <title>挂一些照片吧</title>
+    <script src="static/index/js/bg.js" defer></script>
+    <script src="static/index/js/grab.js" defer></script>
+    <script src="static/index/js/line.js" defer></script>
+    <link rel="stylesheet" href="static/index/css/styles.css">
+    <title>马克杯 | MarkCup</title>
 </head>
 
 <body>
-    <canvas id="background" style="
-    z-index: 1;"></canvas>
-    <div id="page">
-        <div class="draggableBox" id="box1" style="
-        top: 20%; left: 10%;
-        width: 16%;padding-bottom: 8%;
-        background-color: #c3e058;"><div class="string" data-id="s1" data-len="1.1" data-width="100" data-color="rgba(200, 0, 200,1)" data-size="20"></div><h1>Lorem</h1></div>
-        <div class="draggableBox" id="box2" style="
-        top: 50%; left: 40%;
-        width: 20%;padding-bottom: 9%;
-        background-color: #3498db;"><div class="string" data-id="e1"></div><div class="string" data-id="s2" data-width="10" data-color="rgba(200, 200, 0, 1)"></div><h1>Lorem ipsum dolor</h1></div>
-        <div class="draggableBox" id="box3" style="
-        top: 10%; left: 70%;
-        width: 15%;padding-bottom: 11%;
-        background-color: #ff8a8a;"><div class="string" data-id="e2"></div><h1>Lorem ipsum</h1></div>
+    <div id="bg">
+        <p id="bg-t">WELCOM
+            <span id="bg-t-9"><br>MARKCUP</span>
+            <span id="bg-t-0"><br>GAMES</span>
+            <span id="bg-t-1"><br>GAMES</span>
+            <span id="bg-t-2"><br>GAMES</span>
+            <span id="bg-t-3"><br>GAMES</span>
+            <span id="bg-t-4"><br>GAMES</span>
+            <span id="bg-t-5"><br>GAMES</span>
+            <span id="bg-t-6"><br>GAMES</span>
+            <span id="bg-t-7"><br>GAMES</span>
+            <span id="bg-t-8"><br>GAMES</span>
+        </p>
     </div>
-    <canvas class="lines" id="lines_shadow" style="
-    z-index: 3;"></canvas>
-    <canvas class="lines" id="lines" style="
-    z-index: 3;"></canvas>
+    <div id="page">
+        <canvas id="background"></canvas>
+        <!--
+        <div class="newspaper" id="box1" style="
+        top: 20%; left: 10%;
+        width: 16%;padding-bottom: 8%;">
+            <div class="line_note" data-id="s1" data-len="1.1" data-width="10" data-color="#8D7B68" data-size="20">
+            </div>
+            <h1>Lorem</h1>
+        </div>
+        <div class="newspaper" id="box2" style="
+        top: 50%; left: 40%;
+        width: 20%;padding-bottom: 9%;">
+            <div class="line_note" data-id="e1"></div>
+            <div class="line_note" data-id="s2" data-width="10" data-color="#8D7B68"></div>
+            <h1>Lorem ipsum dolor</h1>
+        </div>
+        <div class="newspaper" id="box3" style="
+        top: 10%; left: 70%;
+        width: 30%;
+        ">
+            <div></div>
+            <div class="line_note" data-id="e2"></div>
+            <p class="newspaper_word" id="text0">
+            </p>
+        </div>-->
+    </div>
+    <canvas class="lines" id="lines_shadow" style="z-index: 1;"></canvas>
+    <canvas class="lines" id="lines" style="z-index: 1;"></canvas>
+    <footer>
+        <p>MarkCup &copy; 2024 杭州马克杯网络科技有限公司<br><a id="text0_a" target="_blank"
+                href="https://beian.miit.gov.cn">浙ICP备2023053973号-1</a></p>
+    </footer>
 </body>
 
 </html>

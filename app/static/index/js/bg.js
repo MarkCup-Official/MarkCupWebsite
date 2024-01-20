@@ -1,6 +1,9 @@
 function Start() {
-    ctxBG.strokeStyle = '#f0f0f0';
+    ctxBG.strokeStyle = "rgba(0,0,0,0.1)";
     ctxBG.lineWidth = lineWidth;
+
+    ctxBG.fillStyle = '#f0f0f0';
+    ctxBG.fillRect(0, 0, canvasWidth, canvasHeight);
 
     let width=canvasWidth/lineCount;
     for(let x=0;x<lineCount;x++){
@@ -10,7 +13,7 @@ function Start() {
         ctxBG.stroke();
         ctxBG.closePath();
     }
-    for(let x=0;x<lineCount;x++){
+    for(let x=0;x*width<=canvasHeight;x++){
         ctxBG.beginPath();
         ctxBG.moveTo(0, x*width);
         ctxBG.lineTo(canvasWidth,x*width);
@@ -24,11 +27,13 @@ const ctxBG = canvasBG.getContext('2d');
 
 
 
-const canvasHeight = 1080, canvasWidth = 1920;  // 长宽像素设置
+var canvasWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+var canvasHeight = 1.8*canvasWidth//window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;  // 长宽像素设置
+
 canvasBG.width = canvasWidth;
 canvasBG.height = canvasHeight;
 
-const lineWidth=2;
+const lineWidth=3;
 const lineCount=40;
 
 var isFrameUpdate = true;
