@@ -11,17 +11,20 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 170vw;
-    z-index: -100;
-    display: block;
-    margin: 0 auto;
+    height: 105vw;
+
+    min-height: 100vh;
+
     overflow: hidden;
+
+    display:flex;
+  align-items:center;
 }
 #bg-t{
     position: absolute;
     top: -22vw;
-    left: -5vw;
-    width: 100vw;
+    left: -50vw;
+    width: 200vw;
     z-index: -99;
     margin: 0;
 
@@ -38,45 +41,32 @@ body {
     transform: scaleY(0.8);
 }
 #bg-t-0{
-    letter-spacing: 5vw;
     color:rgb(240, 240, 240);
 }
 #bg-t-1{
-    letter-spacing: 5vw;
     color:rgb(200, 200, 220);
 }
 #bg-t-2{
-    letter-spacing: 5vw;
     color:rgb(160, 160, 200);
 }
 #bg-t-3{
-    letter-spacing: 5vw;
     color:rgb(120, 120, 180);
 }
 #bg-t-4{
-    letter-spacing: 5vw;
     color:rgb(80, 80, 160);
 }
 #bg-t-5{
-    letter-spacing: 5vw;
     color:rgb(40, 40, 140);
 }
 #bg-t-6{
-    letter-spacing: 5vw;
     color:rgb(0, 0, 120);
 }
 #bg-t-7{
-    letter-spacing: 5vw;
     color:rgb(0, 0, 110);
 }
 #bg-t-8{
-    letter-spacing: 5vw;
     color:rgb(0, 0, 105);
 }
-#bg-t-9{
-    letter-spacing: 0.5vw;
-}
-
 /* 绳子canvas */
 .lines {
     /* 适应页面 */
@@ -106,12 +96,16 @@ body {
 
 /* 装订处 */
 #page {
-    display: block;
-    margin: 0 auto;
-    margin-top: 8vw;
+    display: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 
-    width: 85vw;
-    height: 150vw;
+    width: 180vh;
+    max-width: 85vw;
+    height: min(85vw,180vh) ;
 
     border-radius: 1vw;
     box-shadow: 0 0 5vw rgba(0, 0, 0, 0.5);
@@ -168,12 +162,20 @@ h1 {
 footer {
     background-color: #333;
     color: #aaaaaa;
-    padding: 20px;
+    
+    width: 100vw;
+
+    padding: 1vw;
     text-align: center;
     
     margin-top: 10vw;
+
+    position: absolute;
+
+    bottom: 0;
 }
 
 footer p {
-    margin: 0;
+    font-size: 15px;
+    margin: 5px;
 }
