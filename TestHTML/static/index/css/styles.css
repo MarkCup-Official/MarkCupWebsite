@@ -16,9 +16,6 @@ body {
     min-height: 100vh;
 
     overflow: hidden;
-
-    display:flex;
-  align-items:center;
 }
 #bg-t{
     position: absolute;
@@ -96,12 +93,10 @@ body {
 
 /* 装订处 */
 #page {
-    display: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    display: block;
+    margin: 0 auto;
+    margin-top: 8vw;
+    margin-bottom: 8vw;
 
     width: 180vh;
     max-width: 85vw;
