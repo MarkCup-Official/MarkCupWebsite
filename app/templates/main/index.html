@@ -1,60 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="static/index/js/bg.js" defer></script>
-    <script src="static/index/js/grab.js" defer></script>
-    <script src="static/index/js/line.js" defer></script>
+    <link rel="icon" type="image/png" href="static/index/image/64.png" sizes="64x64">
     <link rel="stylesheet" href="static/index/css/styles.css">
     <title>马克杯 | MarkCup</title>
 </head>
 
 <body>
-    <div id="bg">
-        <p id="bg-t">WELCOM
-            <span id="bg-t-9"><br>MARKCUP</span>
-            <span id="bg-t-0"><br>GAMES</span>
-            <span id="bg-t-1"><br>GAMES</span>
-            <span id="bg-t-2"><br>GAMES</span>
-            <span id="bg-t-3"><br>GAMES</span>
-            <span id="bg-t-4"><br>GAMES</span>
-            <span id="bg-t-5"><br>GAMES</span>
-            <span id="bg-t-6"><br>GAMES</span>
-            <span id="bg-t-7"><br>GAMES</span>
-            <span id="bg-t-8"><br>GAMES</span>
-        </p>
+    <ul id="head_box">
+        <img src="static/index/image/LOGO.png">
+        <li><a href="#games">GAMES</a></li>
+        <li><a href="#article">ARTICLES</a></li>
+        <li><a href="#news">NEWS</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+    </ul>
+
+    <div style="overflow: hidden;">
+        <div id="games2">
+        <h1>G</h1>
+        <h1>A</h1>
+        <h1>M</h1>
+        <h1>E</h1>
+        <h1>S</h1>
     </div>
-    <div id="page">
-        <canvas id="background"></canvas>
-        <!--
-        <div class="newspaper" id="box1" style="
-        top: 20%; left: 10%;
-        width: 16%;padding-bottom: 8%;">
-            <div class="line_note" data-id="s1" data-len="1.1" data-width="10" data-color="#8D7B68" data-size="20">
-            </div>
-            <h1>Lorem</h1>
-        </div>
-        <div class="newspaper" id="box2" style="
-        top: 50%; left: 40%;
-        width: 20%;padding-bottom: 9%;">
-            <div class="line_note" data-id="e1"></div>
-            <div class="line_note" data-id="s2" data-width="10" data-color="#8D7B68"></div>
-            <h1>Lorem ipsum dolor</h1>
-        </div>
-        <div class="newspaper" id="box3" style="
-        top: 10%; left: 70%;
-        width: 30%;
-        ">
-            <div></div>
-            <div class="line_note" data-id="e2"></div>
-            <p class="newspaper_word" id="text0">
-            </p>
-        </div>-->
+    <div id="games">
+        <h1>TetrisM</h1>
+        <h1>DinoM</h1>
+        <h1>FarmingtM</h1>
     </div>
-    <canvas class="lines" id="lines_shadow" style="z-index: 1;"></canvas>
-    <canvas class="lines" id="lines" style="z-index: 1;"></canvas>
+    </div>
+    
+    <div id="article">
+        <h1 id="ar_title">ARTICLES
+        </h1>
+        <h2>史莱姆也能学的Python入门课</h2><!-- <p>
+            想学习Python但是无从下手? 想开发软件/游戏却不会编程? 这篇教程提供了完整的Python基础教学, 精心设计学习曲线, 由浅入深帮助你掌握Python. 
+        </p> -->
+        
+        <h2>Python项目式学习, 从游戏引擎开始: 做一个东方Project吧</h2>
+        <h2>(以上都没写完, 敬请期待)</h2>
+    </div>
+    <div id="news">
+    </div>
     <footer>
         <p>MarkCup &copy; 2024 杭州马克杯网络科技有限公司<br><a id="text0_a" target="_blank"
                 href="https://beian.miit.gov.cn">浙ICP备2023053973号-1</a></p>

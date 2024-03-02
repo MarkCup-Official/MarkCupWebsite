@@ -1,179 +1,128 @@
 body {
-    /* 隐藏滑条 */
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
+    margin: 0%;
     overflow-x: hidden;
-    margin: 0;
-    background-color: rgb(0, 0, 100);
 }
 
-/* 背景 */
-#bg{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 170vw;
-    z-index: -100;
-    display: block;
-    margin: 0 auto;
+#head_box {
+    list-style-type: none;
+    margin: 0;
+    padding-top: 45px;
+    padding-bottom: 30px;
     overflow: hidden;
+    background-color: black;
+    text-align: center; 
 }
-#bg-t{
+#head_box img {
     position: absolute;
-    top: -22vw;
-    left: -5vw;
-    width: 100vw;
-    z-index: -99;
-    margin: 0;
+    height: 80px;
+    left: 12%;
+    top: 20px;
+}
 
-    font-size: 24vw;
-    letter-spacing: 0;
-    line-height: 0.8;
-    white-space: nowrap;
+#head_box li {
+    display: inline-block;
+}
 
+#head_box li a {
+    display: block;
+    color: white;
+    font-family: 'Light', Arial;
     text-align: center;
-
-    font-weight: 1000;
-    color:rgb(240, 240, 240);
-
-    transform: scaleY(0.8);
-}
-#bg-t-0{
-    letter-spacing: 5vw;
-    color:rgb(240, 240, 240);
-}
-#bg-t-1{
-    letter-spacing: 5vw;
-    color:rgb(200, 200, 220);
-}
-#bg-t-2{
-    letter-spacing: 5vw;
-    color:rgb(160, 160, 200);
-}
-#bg-t-3{
-    letter-spacing: 5vw;
-    color:rgb(120, 120, 180);
-}
-#bg-t-4{
-    letter-spacing: 5vw;
-    color:rgb(80, 80, 160);
-}
-#bg-t-5{
-    letter-spacing: 5vw;
-    color:rgb(40, 40, 140);
-}
-#bg-t-6{
-    letter-spacing: 5vw;
-    color:rgb(0, 0, 120);
-}
-#bg-t-7{
-    letter-spacing: 5vw;
-    color:rgb(0, 0, 110);
-}
-#bg-t-8{
-    letter-spacing: 5vw;
-    color:rgb(0, 0, 105);
-}
-#bg-t-9{
-    letter-spacing: 0.5vw;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-/* 绳子canvas */
-.lines {
-    /* 适应页面 */
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    /* 禁止鼠标点击 */
-    pointer-events: none;
+#head_box li a:hover {
+    background-color: #111;
 }
 
-/* 绳子节点 */
-.line_note {
-    width: 0px;
-    height: 0px;
-    top: 3%;
-    left: 50%;
-    position: absolute;
+@font-face {
+    font-family: 'Bold';
+    src: url('font/MiSans/Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Light';
+    src: url('font/MiSans/Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+#games{
+    padding: 0;
+    width: 79.6%;
+  display: inline-block;
 }
-
-/* 可抓取的地方 */
-.draggableBox {
-    position: absolute;
-    cursor: grab;
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+#games2{
+    z-index: -3;
+    width: 20%;
+    display: inline-block;
 }
-
-/* 装订处 */
-#page {
-    display: block;
-    margin: 0 auto;
-    margin-top: 8vw;
-
-    width: 85vw;
-    height: 150vw;
-
-    border-radius: 1vw;
-    box-shadow: 0 0 5vw rgba(0, 0, 0, 0.5);
-
-    border: 0.3vw solid #000000;
-
-    overflow: hidden;
-}
-
-#background{
-    /* 适应页面 */
+#games2 h1{
+    background: repeating-linear-gradient(to left, #000000 0, #000 10px, transparent 0, transparent 60px);
+    z-index: -2;
     position: relative;
-    top: 0;
-    left: 0;
-    width:calc(100% );
-
+    font-size: 60px;
+    margin: 0;
+    transform: scale(1.5, 1.5) translate(0%, 0px);
+    text-align: center; 
+    font-family: 'Light', Arial;
+    color: transparent;
+}
+#games h1{
+    font-family: 'Bold', Arial;
+    margin: 0;
+    position: relative;
+    text-align: right; 
+    font-size: 100px;
+    transform: scale(1.9, 1.9) translate(-22%, 0px);
     z-index: -1;
 }
 
-.newspaper {
-    position: relative;
-    background-color: #F0ECE5;
-    box-shadow: 0.8vh 0.8vh 0px rgba(0, 0, 0, 0.3), 0px 0px 3vh rgba(0, 0, 0, 0.1);
-}
-
-.newspaper_word {
-    position: relative;
-    color: #161A30;
-}
-
-#text0 {
-    margin: 1vh;
-    font-size: 1.5vh;
-    text-align: center;
-}
-
-#text0_a {
-    /* 不显示下划线 */
-    text-decoration: none;
-    /* 设置链接颜色，可以根据需要修改 */
-    color: #aaaaaa;
-}
-#text0_a:hover {
-    text-decoration: underline;
-    color: rgb(120, 120, 180); /* 当鼠标悬停时的链接颜色 */
-}
-
-
-
-h1 {
-    margin: 10px;
-}
-
-footer {
-    background-color: #333;
-    color: #aaaaaa;
-    padding: 20px;
-    text-align: center;
-    
-    margin-top: 10vw;
-}
-
-footer p {
+#article{
+    background-color: black;
     margin: 0;
+    padding: 30px;
+}
+#article h2{
+    margin: 0;
+    color: white;
+    text-align: left;
+    font-size: 50px;
+}
+#article p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color:  white; 
+  }
+  #ar_title{
+    margin: 0;
+    font-size: 100px;
+    text-align: right;
+    color: white;
+    font-family: 'Light', Arial;letter-spacing: 30px;
+  }
+
+footer{
+    margin: 0;
+    padding: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    overflow: hidden;
+    background-color: black;
+    text-align: center; 
+}
+
+footer p{
+    color: #aaaaaa;
+}
+footer p a{
+    color: #949494;
+    text-decoration: none;
+    font-size:  1%;
+}
+footer p a:hover{
+    text-decoration: underline;
 }
