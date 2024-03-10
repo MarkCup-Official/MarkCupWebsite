@@ -11,6 +11,12 @@ from flask import Blueprint
 
 # 创建蓝图实例
 main_bp = Blueprint('main', __name__)
+eng_bp = Blueprint('eng', __name__)
 
 # 绑定路由
 from . import main_routes
+from . import eng_routes
+
+def RegisterBP(app):
+    app.register_blueprint(main_bp)
+    app.register_blueprint(eng_bp)

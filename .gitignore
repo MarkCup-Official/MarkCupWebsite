@@ -27,3 +27,5 @@ __pycache__/
 # Logs
 *.log
 logs/
+
+temp_engoutput/

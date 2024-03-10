@@ -8,13 +8,13 @@
 """
 
 from flask import Flask
-from app.routes import main_bp
+from app.routes import RegisterBP
 
 def create_app():
     # 创建实例
     app = Flask(__name__)
     
     # 绑定蓝图
-    app.register_blueprint(main_bp)
+    RegisterBP(app)
 
     return app
