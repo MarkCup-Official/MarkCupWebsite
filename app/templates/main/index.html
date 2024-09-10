@@ -6,46 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="static/index/image/64.png" sizes="64x64">
     <link rel="stylesheet" href="static/index/css/styles.css">
+    <!--<script src="static/index/js/ScrollSticker.js"></script>-->
+    <script src="static/index/js/PageAdjust.js"></script>
     <title>马克杯 | MarkCup</title>
 </head>
 
 <body>
-    <ul id="head_box">
-        <img src="static/index/image/LOGO.png">
-        <li><a href="#games">GAMES</a></li>
-        <li><a href="#article">ARTICLES</a></li>
-        <li><a href="#news">NEWS</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+    <ul id="head_box" class="head_box" onclick="ShowOrHide()">
+        <img id="logo" class="logo" src="static/index/image/LOGO_160.png">
+        <li class="head_button"><a href="/articles">新闻</a></li>
+        <li class="head_button"><a href="/articles">作品</a></li>
+        <li class="head_button"><a href="/articles">关于我们</a></li>
+        <li class="head_button"><a href="/articles">联系我们</a></li>
     </ul>
 
-    <div style="overflow: hidden;">
-        <div id="games2">
-        <h1>G</h1>
-        <h1>A</h1>
-        <h1>M</h1>
-        <h1>E</h1>
-        <h1>S</h1>
-    </div>
-    <div id="games">
-        <h1>TetrisM</h1>
-        <h1>DinoM</h1>
-        <h1>FarmingtM</h1>
-    </div>
-    </div>
     
-    <div id="article">
-        <h1 id="ar_title">ARTICLES
-        </h1>
-        <h2>史莱姆也能学的Python入门课</h2><!-- <p>
-            想学习Python但是无从下手? 想开发软件/游戏却不会编程? 这篇教程提供了完整的Python基础教学, 精心设计学习曲线, 由浅入深帮助你掌握Python. 
-        </p> -->
-        
-        <h2>Python项目式学习, 从游戏引擎开始: 做一个东方Project吧</h2>
-        <h2>(以上都没写完, 敬请期待)</h2>
-    </div>
-    <div id="news">
-    </div>
+    <section class="section_home" id="home">
+            <div class="container">
+                <p class="empty">aaa</p>
+                <h1 class="title">我们是谁</h1>
+                <p>我们是一个生产情感的团队, 我们致力于产生最棒的体验</p>
+                <p>目前我们的领域: 游戏制作, 视频制作</p>
+                <p>当然目前"我们"在大部分时间只有一个人</p>
+                <p class="empty">aaa</p>
+                <h1 class="title_right">我们做了什么</h1>
+                <p class="p_right">游戏: TetrisM, FarmingtM, DinoM...</p>
+                <p class="p_right">运营账号: 马克杯MarkCup</p>
+                <p class="empty">aaa</p>
+                <h1 class="title">有什么新鲜事</h1>
+                <p>2024/9/10: 我们正在筹备参加TapTap聚光灯GameJam</p>
+                <p>2024/9/1: 我们正在制作TetrisM的重置版!</p>
+                <p class="empty">aaa</p>
+                <h1 class="title_right">我们在哪里</h1>
+                <p class="p_right">我们一直都在, 你可以通过邮件找到我们</p>
+                <p class="p_right">2742586749@qq.com</p>
+                <p class="empty">aaa</p>
+                <h1 class="title">致谢 敬礼</h1>
+                <p>所有的玩家, 观众</p>
+                <p>所有的合作者</p>
+                <p class="empty">aaa</p>
+            </div>
+    </section>
+
+
     <footer>
         <p>MarkCup &copy; 2024 杭州马克杯网络科技有限公司<br><a id="text0_a" target="_blank"
                 href="https://beian.miit.gov.cn">浙ICP备2023053973号-1</a></p>

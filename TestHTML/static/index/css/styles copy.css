@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
+    margin: 0%;
+    overflow-x: hidden;
+}
+
+#head_box {
+    list-style-type: none;
+    margin: 0;
+    padding-top: 45px;
+    padding-bottom: 30px;
+    overflow: hidden;
+    background-color: black;
+    text-align: center; 
+}
+#head_box img {
+    position: absolute;
+    height: 80px;
+    left: 12%;
+    top: 20px;
+}
+
+#head_box li {
+    display: inline-block;
+}
+
+#head_box li a {
+    display: block;
+    color: white;
+    font-family: 'Light', Arial;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#head_box li a:hover {
+    background-color: #111;
+}
+
+@font-face {
+    font-family: 'Bold';
+    src: url('font/MiSans/Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Light';
+    src: url('font/MiSans/Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+#games{
+    padding: 0;
+    width: 79.6%;
+  display: inline-block;
+}
+#games2{
+    z-index: -3;
+    width: 20%;
+    display: inline-block;
+}
+#games2 h1{
+    background: repeating-linear-gradient(to left, #000000 0, #000 10px, transparent 0, transparent 60px);
+    z-index: -2;
+    position: relative;
+    font-size: 60px;
+    margin: 0;
+    transform: scale(1.5, 1.5) translate(0%, 0px);
+    text-align: center; 
+    font-family: 'Light', Arial;
+    color: transparent;
+}
+#games h1{
+    font-family: 'Bold', Arial;
+    margin: 0;
+    position: relative;
+    text-align: right; 
+    font-size: 100px;
+    transform: scale(1.9, 1.9) translate(-22%, 0px);
+    z-index: -1;
+}
+
+#article{
+    background-color: black;
+    margin: 0;
+    padding: 30px;
+}
+#article h2{
+    margin: 0;
+    color: white;
+    text-align: left;
+    font-size: 50px;
+}
+#article p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color:  white; 
+  }
+  #ar_title{
+    margin: 0;
+    font-size: 100px;
+    text-align: right;
+    color: white;
+    font-family: 'Light', Arial;letter-spacing: 30px;
+  }
+
+footer{
+    margin: 0;
+    padding: 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    overflow: hidden;
+    background-color: black;
+    text-align: center; 
+}
+
+footer p{
+    color: #aaaaaa;
+}
+footer p a{
+    color: #949494;
+    text-decoration: none;
+    font-size:  1%;
+}
+footer p a:hover{
+    text-decoration: underline;
+}
